@@ -4,7 +4,7 @@
 We are sophomore, major in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
 
 | Name                         | Student ID       | Mail                                      |
-| :---                         |    :----:        |          ---:                             |
+| :---                         |    :----:        |          :---:                             |
 | Le Duc Anh Tuan              | 20204929         | tuan.lda204929@sis.hust.edu.vn            |
 | Hoang Gia Nguyen             | 20204889         | nguyen.hg204889@sis.hust.edu.vn           |
 | Hoang Long Vu                | 20204897         | vu.hl204897@sis.hust.edu.vn               |
