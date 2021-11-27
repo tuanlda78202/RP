@@ -1,7 +1,7 @@
 # FO Project
 [...]
 ## Collaborators 
-We are sophomore, major in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
+We are sophomores, major in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
 
 | Name                         | Student ID       | Mail                                      |
 | :---                         |    :----:        |          :---:                             |
