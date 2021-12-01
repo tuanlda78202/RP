@@ -7,4 +7,4 @@ We discussed the optimal problem to solve and divided the basic tasks for each m
 | Le Duc Anh Tuan              | Code CP & Make a report (run code)                               |
 | Nguyen Huu Tuan Duy          | Modeling CP, Create 1 dataset & Fill result to report            |
 | Hoang Long Vu                | Code ILP & Create content for presentation                       |
-| Hoang Gia Nguyen             | Modeling ILP & Slide                                             |
+| Hoang Gia Nguyen             | Modeling ILP, Create 1 dataset & Slide                                             |
