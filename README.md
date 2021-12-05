@@ -16,5 +16,4 @@ We are sophomores, major in Data Science and Artificial Intelligence at Hanoi Un
 
 ## Announcements
 All older announcements can be found in `ANNOUNCEMENTS.md`
-### Materials
-[...]
+
