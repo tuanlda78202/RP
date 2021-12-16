@@ -4,22 +4,22 @@ from ortools.linear_solver import pywraplp
 def input(filename):
     with open(filename) as f:
         N, D, a, b = [int(x) for x in f.readline().split()]
-        day_off = [[0 for _ in range(D)] for _ in range(N)]
+        F = [[0 for _ in range(D)] for _ in range(N)]
         for i in range(N):
             d = [int(x) for x in f.readline().split()[:-1]]
             if d:
-                day_off[i][d[0]-1] = 1
+                F[i][d[0]-1] = 1
 
-    return N, D, a, b, day_off
+    return N, D, a, b, F
 
 
 filename = 'data.txt'
-N, D, a, b, day_off = input(filename)
+N, D, a, b, F = input(filename)
 print('N =', N)
 print('D =', D)
 print('alpha =', a)
 print('beta =', b)
-print(day_off)
+print(F)
 
 solver = pywraplp.Solver('ROSTERING_MIP', pywraplp.Solver.CBC_MIXED_INTEGER_PROGRAMMING)
 INF = solver.infinity()
@@ -38,7 +38,7 @@ z = solver.IntVar(0, D, 'Z')
 # Each employee works no more than one shift every day
 for i in range(N):
     for j in range(D):
-        if day_off[i][j] == 0:
+        if F[i][j] == 0:
             cstr = solver.Constraint(-INF, 1)
             for k in range(1, 5):
                 cstr.SetCoefficient(x[i, j, k], 1)
@@ -48,17 +48,17 @@ for i in range(N):
 # Employees can have a day off after having a night shift on the previous day
 for i in range(N):
     for j in range(D):
-        if day_off[i][j] == 0:
+        if F[i][j] == 0:
             cstr = solver.Constraint(-INF, 1)
             for k in range(1, 5):
                 cstr.SetCoefficient(x[i, j, k], 1)
                 if j != 0:
                     cstr.SetCoefficient(x[i, j-1, 4], 1)
 
-# Employees will not work on their day off
+# Employees will not work on their off days
 for i in range(N):
     for j in range(D):
-        if day_off[i][j] == 1:
+        if F[i][j] == 1:
             cstr = solver.Constraint(0, 0)
             for k in range(1, 5):
                 cstr.SetCoefficient(x[i, j, k], 1)
