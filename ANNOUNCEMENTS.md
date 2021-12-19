@@ -1,6 +1,6 @@
 # DISSCUSION
 ## Sun 28 Nov 12:00 PM
-We discussed the optimal problem to solve and divided the basic tasks for each member. Below is a table of tasks to do (to be completed by 12/12)
+We discussed the optimal problem to solve and divided the basic tasks for each member. Below is a table of tasks to do (to be completed by 15/12)
 
 | Member                       | Task                                                             |
 | :----                        | :----:                                                           |
