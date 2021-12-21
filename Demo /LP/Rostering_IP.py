@@ -49,7 +49,7 @@ for i in range(N):
 for i in range(N):
     for j in range(D):
         if F[i][j] == 0:
-            cstr = solver.Constraint(-INF, 1)
+            cstr = solver.Constraint(1, 1)
             for k in range(1, 5):
                 cstr.SetCoefficient(x[i, j, k], 1)
                 if j != 0:
