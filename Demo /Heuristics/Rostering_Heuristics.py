@@ -49,7 +49,7 @@ def select(N, off_today, off_nextday, a, b):
     lower_nextday = N - off_nextday - z - 4*b
 
     if lower_nextday > b:
-        z += (lower_nextday - b) # remove employees /????/
+        z += (lower_nextday - b) # remove redundant employees
     elif upper_nextday < a:
         add = a - upper_nextday  # add employees to suffice the bound
     else:
@@ -60,14 +60,14 @@ def select(N, off_today, off_nextday, a, b):
     else:
         return z, add
 
-x = np.full((N, D, 4), 0)  # solution matrix
 
 def heuristics(N, D, a, b, F):
     num_night = np.full(N, 0)  # number of night shifts of each employee
     global x
+
     for j in range(D):
-        off_today = np.copy(F[:, j][:N])
-        off_nextday = np.copy(F[:, j+1][:N])
+        off_today = np.array(F[:, j][:N])
+        off_nextday = np.array(F[:, j+1][:N])
 
         if j != 0:
             for i in range(N):
@@ -84,24 +84,24 @@ def heuristics(N, D, a, b, F):
 
         # Assign the employee with minimum number of night shift (and absent on the next day) to today's night shift
         emp_off_nextday = np.array([i for i in range(len(off_nextday)) if off_nextday[i] == 1])
-        off_nextday_night = np.array([num_night[i] for i in emp_off_nextday])
+        off_night_nextday = np.array([num_night[i] for i in emp_off_nextday])
 
         while add > 0:
-            emp_index = np.argmin(off_nextday_night)
+            emp_index = np.argmin(off_night_nextday)
             x[emp_off_nextday[emp_index], j, 3] = 1
-            num_night[emp_off_nextday[emp_index]] += 1
+            num_night[emp_off_nextday[emp_index]] += 1  # add 1 employee to today's night shift
             off_today[emp_off_nextday[emp_index]] = 1  # avoid working more than one shift in a day
             add -= 1
 
-        # Assign other employees to the night shift if needed
-        emp_today = np.array([i for i in range(len(off_today)) if off_today[i] != 1])
-        today_night = np.array([num_night[i] for i in emp_today])
+        # Assign other employees to the night shift if needed (choose among idle employees for today)
+        emp_work_today = np.array([i for i in range(len(off_today)) if off_today[i] != 1])
+        work_night_today = np.array([num_night[i] for i in emp_work_today])
 
         while remain > 0:
-            emp_index = np.argmin(today_night)
-            x[emp_today[emp_index], j, 3] = 1
-            num_night[emp_today[emp_index]] += 1
-            off_today[emp_today[emp_index]] = 1
+            emp_index = np.argmin(work_night_today)
+            x[emp_work_today[emp_index], j, 3] = 1
+            num_night[emp_work_today[emp_index]] += 1
+            off_today[emp_work_today[emp_index]] = 1
             remain -= 1
 
         # Assign other employees to other shifts of today
@@ -110,15 +110,14 @@ def heuristics(N, D, a, b, F):
             if off_today[i] == 0:
                 x[i, j, k] = 1
                 off_today[i] = 1  # avoid assigning the same employee in a day
-                i += 1
                 k = (k+1) % 3
-            else:
-                i += 1
-
+            i += 1
     return max(num_night)
 
 
 if __name__ == '__main__':
+    x = np.full((N, D, 4), 0)  # solution matrix
+
     start = time()
     res = heuristics(N, D, a, b, F)
     end = time()
@@ -130,8 +129,6 @@ if __name__ == '__main__':
             for k in range(4):
                 if x[i, j, k] == 1:
                     print(f'Employee {i+1}: works on day {j+1}, at shift {k+1}')
-    print('check a and b conditions')
-    for i in range()
 
-    print(x)
+    # print(x)
     print('Total execution time:', end-start)

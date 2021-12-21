@@ -1,4 +1,5 @@
 from ortools.linear_solver import pywraplp
+from time import time
 
 
 def input(filename):
@@ -15,11 +16,11 @@ def input(filename):
 
 filename = 'data.txt'
 N, D, a, b, F = input(filename)
-print('N =', N)
-print('D =', D)
-print('alpha =', a)
-print('beta =', b)
-print(F)
+# print('N =', N)
+# print('D =', D)
+# print('alpha =', a)
+# print('beta =', b)
+# print(F)
 
 solver = pywraplp.Solver('ROSTERING_MIP', pywraplp.Solver.CBC_MIXED_INTEGER_PROGRAMMING)
 INF = solver.infinity()
@@ -77,15 +78,23 @@ for i in range(N):  # the maximum night shift of any employee is minimised
         obj.SetCoefficient(x[i, j, 4], -1)
         obj.SetCoefficient(z, 1)
 
-solver.Minimize(z)
-status = solver.Solve()
 
 
 if __name__ == '__main__':
+    start = time()
+
+    solver.Minimize(z)
+    status = solver.Solve()
+
+    end = time()
+
     if status == pywraplp.Solver.OPTIMAL:
         print('Optimal value:', solver.Objective().Value())
         for i in range(N):
             for j in range(D):
                 for k in range(1, 5):
                     if x[i, j, k].solution_value() > 0:
-                        print(f'Employee: {i+1} works on day {j+1}, at shift {k}')
+                        print(f'Employee {i+1}: works on day {j+1}, at shift {k}')
+
+    print('Total execution time:', end-start)
+
