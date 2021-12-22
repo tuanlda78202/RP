@@ -12,17 +12,20 @@ from time import time
 def input(filename):
     with open(filename) as f:
         N, D, a, b = [int(x) for x in f.readline().split()]
-        F = [[0 for _ in range(D+1)] for _ in range(N+1)]
+        F = [[0 for _ in range(D)] for _ in range(N)]
         for i in range(N):
             d = [int(x) for x in f.readline().split()[:-1]]
             if d:
                 F[i][d[0]-1] = 1
-    F = np.array(F)
     return N, D, a, b, F
 
 
 filename = 'data.txt'
 N, D, a, b, F = input(filename)
+
+F = np.array(F)
+F = np.pad(F, ((0,0),(0,1)), mode='constant', constant_values=0)  # add another column of 0 for easier index
+
 # print('N =', N)
 # print('D =', D)
 # print('alpha =', a)
