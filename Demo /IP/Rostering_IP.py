@@ -1,4 +1,5 @@
 from ortools.linear_solver import pywraplp
+import numpy as np
 from time import time
 
 
@@ -16,6 +17,7 @@ def input(filename):
 
 filename = 'data.txt'
 N, D, a, b, F = input(filename)
+F = np.array(F)
 # print('N =', N)
 # print('D =', D)
 # print('alpha =', a)
