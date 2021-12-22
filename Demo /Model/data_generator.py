@@ -46,7 +46,7 @@ First = [a,b,N,D]
 with open('data.txt', 'w') as f:
     for i in First:
         f.write(str(i)+" ")
-        f.write('\n')
+    f.write('\n')
     for k in F:
         f.write(str(k)+" ")
         if k == -1 :
