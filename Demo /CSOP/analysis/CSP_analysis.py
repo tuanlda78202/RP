@@ -67,34 +67,37 @@ def solve(n, d, a, b, F):
     solver = cp_model.CpSolver()
     status = solver.Solve(model)
 
-
+# 10 -> 100 (step = 5) for 30 days
 res_10_100_30 = []
-for i in range(10, 16, 5):
-    N, D, a, b, F = read_data(f'data/data-30/dataN{i}D30.txt')
+for i in range(10, 101, 5):
+    N, D, a, b, F = read_data(f'drive/MyDrive/analysis/data/data-30/dataN{i}D30.txt')
     start = time()
     solve(N, D, a, b, F)
     end = time()
     res_10_100_30.append(end-start)
 
+# 110 -> 300 (step = 10) for 30 days
 res_110_300_30 = []
 for i in range(110, 301, 10):
-    N, D, a, b, F = read_data(f'data/data-30/dataN{i}D30.txt')
+    N, D, a, b, F = read_data(f'drive/MyDrive/analysis/data/data-30/dataN{i}D30.txt')
     start = time()
     solve(N, D, a, b, F)
     end = time()
     res_110_300_30.append(end-start)
 
+# 10 -> 100 staff (step = 2) for 180 days 
 res_10_100_180 = []
 for i in range(10, 101, 2):
-    N, D, a, b, F = read_data(f'data/data-30/dataN{i}D30.txt')
+    N, D, a, b, F = read_data(f'drive/MyDrive/analysis/data/data-180/dataN{i}D180.txt')
     start = time()
     solve(N, D, a, b, F)
     end = time()
     res_10_100_180.append(end-start)
 
+# 10 -> 50 (step = 1) for 365 days
 res_10_50_365 = []
 for i in range(10, 51, 1):
-    N, D, a, b, F = read_data(f'data/data-30/dataN{i}D30.txt')
+    N, D, a, b, F = read_data(f'drive/MyDrive/analysis/data/data-365/dataN{i}D365.txt')
     start = time()
     solve(N, D, a, b, F)
     end = time()
