@@ -5,7 +5,6 @@
 - F(i): list of staffs rest days i.
 - The maximum number of night shifts assigned to a specific staff is the smallest.
 ## Collaborators 
-We are sophomores, major in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
 | Name                         | Student ID       | Mail                                      |
 | :---                         |    :----:        |          :---:                             |
 | Le Duc Anh Tuan              | 20204929         | tuan.lda204929@sis.hust.edu.vn            |
