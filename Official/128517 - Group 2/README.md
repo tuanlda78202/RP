@@ -1,4 +1,0 @@
-- All the newly generated data will be written to the folder `data`.
-- The folder `data` contains different subfolders `data-30`, ..., `data-1000` corresponds to each time interval: 30 days, 180 days, 365 days, and 1000 days.
-- The file `Final_Code.ipynb` contains the complete codes for: Optimisation (CSP + MIP + Heuristic); Visualisation; Data Generation; and Data Analysis.
-- The folder `running-time` consists of the running time analysis for the three algorithms on different time interveals (30 days, 180 days, 365 days, and 1000 days).
