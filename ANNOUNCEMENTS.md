@@ -1,5 +1,5 @@
 # DISSCUSION
-## Sun 28 Nov 12:00 PM
+## Sun 28 Nov 2021 12:00 PM
 | Member                       | Task                                                             |
 | :----                        | :----:                                                           |
 | Le Duc Anh Tuan              | Code CP                                                          |
@@ -8,7 +8,7 @@
 | Hoang Gia Nguyen             | Modeling ILP                                                     |
 
 
-## Sun 18 Dec 4:00 PM
+## Sun 18 Dec 2021 4:00 PM
 | Member                       | Task                                                             |
 | :----                        | :----:                                                           |
 | Le Duc Anh Tuan              | Visualization                                                    |
